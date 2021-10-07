@@ -76,4 +76,4 @@ typings/
 .fusebox/
 
 # Private keys
-
+config/keys.js
