@@ -81,14 +81,6 @@ describe('Test mongodb connection', () => {
 describe('Read data from spreadsheet file', () => {
   it('should read data from local spreadsheet file', async () => {
     await excelFileReader('./file/Test.xlsx').then((rows) => {
-      console.table(rows)
-      expect(rows).not.toBeNull()
-    })
-  })
-
-  it('should read data from remote spreadsheet file', async () => {
-    await excelFileReader(require('../config/keys').SpreadsheetURL).then((rows) => {
-      console.table(rows)
       expect(rows).not.toBeNull()
     })
   })
