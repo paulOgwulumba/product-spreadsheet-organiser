@@ -11,7 +11,7 @@ class Server {
     const products = require('../routes/api/products')
 
     // Use routes
-    this.app.use('/api/products', products)
+    this.app.use('/api/iPhone/prices', products)
 
     // A call to base url of api returns error message
     this.app.get('/', (request, response) => {

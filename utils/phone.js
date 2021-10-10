@@ -31,14 +31,16 @@ class Phone {
     this.brand = brand // Phone brand name
     this.storageSize = storageSize // Phone storage size
     this.status = status
-    this.price.New = priceNew
-    this.price.A1 = priceA1
-    this.price.A2 = priceA2
-    this.price.B1 = priceB1
-    this.price.B2 = priceB2
-    this.price.C = priceC
-    this.price['C/B'] = priceCB
-    this.price['C/D'] = priceCD
+    this.price = {
+      New: priceNew,
+      A1: priceA1,
+      A2: priceA2,
+      B1: priceB1,
+      B2: priceB2,
+      C: priceC,
+      'C/B': priceCB,
+      'C/D': priceCD
+    }
   }
 }
 
