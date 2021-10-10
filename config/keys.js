@@ -5,7 +5,7 @@ dotenv.config({ path: path.join(__dirname, '..', '.env') })
 /**
  * @description URL to mongodb server.
  */
-const MongoURI = process.env.mongoURI
+const MongoURI = 'mongoURI=mongodb+srv://paul044:.Millicent99@react-course.lorip.mongodb.net/iPhone?retryWrites=true&w=majority'
 
 /**
  * @desc URL to spreadsheet document.

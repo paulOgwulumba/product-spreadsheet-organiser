@@ -9,15 +9,20 @@ const { unpackData, catalogData } = require('./data')
  */
 async function extractPriceList (filePath = './file/Price List.xlsx') {
   const finalCatalog = []
-  await excelFileReader(filePath, { sheet: 'IPHONES' }).then(rows => {
-    const purchaseList = unpackData(rows, 'BUY')
-    const purchaseCatalog = catalogData(purchaseList, 'BUY')
+  try {
+    await excelFileReader(filePath, { sheet: 'IPHONES' }).then(rows => {
+      const purchaseList = unpackData(rows, 'BUY')
+      const purchaseCatalog = catalogData(purchaseList, 'BUY')
+  
+      const saleList = unpackData(rows, 'SELL')
+      const saleCatalog = catalogData(saleList, 'SELL')
+  
+      finalCatalog.push(purchaseCatalog, saleCatalog)
+    })
+  } catch (e) {
+    console.error(e)
+  }
 
-    const saleList = unpackData(rows, 'SELL')
-    const saleCatalog = catalogData(saleList, 'SELL')
-
-    finalCatalog.push(purchaseCatalog, saleCatalog)
-  })
 
   return finalCatalog
 }

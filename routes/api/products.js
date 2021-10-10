@@ -21,11 +21,11 @@ mongoose.connect(MongoURI, { useNewUrlParser: true })
  * @desc This endpoint triggers the extraction of price information from the spreadsheet document and storage in the database
  */
 products.get('/extract', async (req, res) => {
-  const priceInformation = await extractPriceList()
-  const buyPriceInformation = priceInformation[0]
-  const sellPriceInformation = priceInformation[1]
-
   try {
+    const priceInformation = await extractPriceList()
+    const buyPriceInformation = priceInformation[0]
+    const sellPriceInformation = priceInformation[1]
+
     // delete old information in database
     await sellRequestModel.deleteMany({})
       .then(() => console.log('sell request database emptied successfully'))
@@ -93,21 +93,29 @@ async function getFromDatabase (request = 'ALL') {
 
   // buy request
   if (/buy/i.test(request)) {
-    await buyRequestModel.findOne({ request: 'BUY' }, (error, doc) => {
-      if (error) {
-        throw error
-      }
-      console.log('Buy Request price information extracted from database successfully')
-      data.push(doc)
-    }).clone()
+    try {
+      await buyRequestModel.findOne({ request: 'BUY' }, (error, doc) => {
+        if (error) {
+          throw error
+        }
+        console.log('Buy Request price information extracted from database successfully')
+        data.push(doc)
+      }).clone()
+    } catch (e) {
+      console.error(e)
+    }
   } else if (/sell/i.test(request)) { // sell request
-    await sellRequestModel.findOne({ request: 'SELL' }, (error, doc) => {
-      if (error) {
-        throw error
-      }
-      console.log('Sell Request price information extracted from database successfully')
-      data.push(doc)
-    }).clone()
+    try {
+      await sellRequestModel.findOne({ request: 'SELL' }, (error, doc) => {
+        if (error) {
+          throw error
+        }
+        console.log('Sell Request price information extracted from database successfully')
+        data.push(doc)
+      }).clone()
+    } catch (e) {
+      console.error(e)
+    }
   } else { // get both sell and buy request
     await sellRequestModel.findOne({ request: 'SELL' })
       .then(async (doc) => {
