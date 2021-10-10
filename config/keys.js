@@ -1,7 +1,11 @@
+const dotenv = require('dotenv')
+const path = require('path')
+
+dotenv.config({ path: path.join(__dirname, '..', '.env') })
 /**
  * @description URL to mongodb server.
  */
-const MongoURI = 'mongodb://127.0.0.1:27017'
+const MongoURI = process.env.mongoURI
 
 /**
  * @desc URL to spreadsheet document.
