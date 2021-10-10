@@ -118,7 +118,15 @@ async function getFromDatabase (request = 'ALL') {
             console.log('Buy Request price information extracted from database successfully')
             data.push(docs)
           })
+          .catch (err) {
+            console.error(err)
+            throw err
+          }
       })
+      .catch (err) {
+        console.error(err)
+        throw err
+      }
   }
 
   return data
