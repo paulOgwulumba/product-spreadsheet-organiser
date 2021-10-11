@@ -7,8 +7,8 @@ const Phone = require('./phone')
  * @returns An array containing arrays of spreadsheet cells of each iPhone brand in specified section.
  */
 function unpackData (data = [], section = 'BUY') {
-  let column = {}
-  let unpackedData = []
+  const column = {}
+  const unpackedData = []
 
   switch (section) {
     case 'BUY':
@@ -100,7 +100,7 @@ function objectifyData (data = []) {
  * @param {*} data An array containing arrays of spreadsheet cells of each iPhone brand in specified section.
  * @returns Object containing all information about specified section (buy or sell).
  */
-function catalogData(data = [], request = '') {
+function catalogData (data = [], request = '') {
   const catalogArray = []
   for (const datum of data) {
     // create an array of Phone objects

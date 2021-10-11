@@ -13,16 +13,15 @@ async function extractPriceList (filePath = './file/Price List.xlsx') {
     await excelFileReader(filePath, { sheet: 'IPHONES' }).then(rows => {
       const purchaseList = unpackData(rows, 'BUY')
       const purchaseCatalog = catalogData(purchaseList, 'BUY')
-  
+
       const saleList = unpackData(rows, 'SELL')
       const saleCatalog = catalogData(saleList, 'SELL')
-  
+
       finalCatalog.push(purchaseCatalog, saleCatalog)
     })
   } catch (e) {
     console.error(e)
   }
-
 
   return finalCatalog
 }
