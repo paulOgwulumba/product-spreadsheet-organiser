@@ -1,4 +1,5 @@
 const Server = require('./utils/server')
+require('dotenv').config()
 
 // creates new server
 const app = new Server()
