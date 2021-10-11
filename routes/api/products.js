@@ -15,7 +15,11 @@ const buyRequestModel = mongoose.model('buy-request', RequestSchema)
 const sellRequestModel = mongoose.model('sell-request', RequestSchema)
 
 // connect mongoose to mongodb server
-mongoose.connect(MongoURI, { useNewUrlParser: true })
+try {
+  mongoose.connect(MongoURI, { useNewUrlParser: true })
+} catch (e) {
+  console.error(e)
+}
 
 /**
  * @desc This endpoint triggers the extraction of price information from the spreadsheet document and storage in the database
