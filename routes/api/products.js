@@ -100,7 +100,7 @@ async function getFromDatabase (request = 'ALL') {
     try {
       await buyRequestModel.findOne({ request: 'BUY' }, (error, doc) => {
         if (error) {
-          throw error
+          console.error(error)
         }
         console.log('Buy Request price information extracted from database successfully')
         data.push(doc)
@@ -112,7 +112,7 @@ async function getFromDatabase (request = 'ALL') {
     try {
       await sellRequestModel.findOne({ request: 'SELL' }, (error, doc) => {
         if (error) {
-          throw error
+          console.error(error)
         }
         console.log('Sell Request price information extracted from database successfully')
         data.push(doc)

@@ -1,11 +1,8 @@
-const dotenv = require('dotenv')
-const path = require('path')
 
-dotenv.config()
 /**
  * @description URL to mongodb server.
  */
-const MongoURI = process.env.mongoURI
+const MongoURI = process.env.MONGO_URI
 
 /**
  * @desc URL to spreadsheet document.
